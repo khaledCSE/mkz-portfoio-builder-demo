@@ -1,6 +1,7 @@
-import { Avatar, Button, Card, Container, Grid, TextField } from '@mui/material';
+import { Avatar, Button, Card, Container, Grid, IconButton, TextField } from '@mui/material';
 import { Field, FieldArray, Form, Formik } from 'formik';
 import Head from 'next/head';
+import Link from 'next/link';
 import { CSSProperties, Dispatch, Fragment, SetStateAction, useContext, useEffect, useState } from 'react';
 import PrivateRoute from '../components/auth/PrivateRoute';
 import { authContext } from '../components/contexts/auth.context';
@@ -8,6 +9,7 @@ import TextInput from '../components/form/TextInput';
 import WorkInputGroup from '../components/form/WorkInputGroup';
 import Navbar from '../components/Navbar';
 import { formatDateForInput } from '../components/utils/date.util';
+import { Edit as EditIcon, Visibility } from '@mui/icons-material';
 
 export interface iWorkExperience {
     startDate: string;
@@ -28,7 +30,7 @@ interface iProfile {
     workExperiences?: iWorkExperience[];
 }
 
-const imageHolderStyles: CSSProperties = {
+export const imageHolderStyles: CSSProperties = {
     width: '100%',
     height: '15rem',
     // backgroundColor: 'lightskyblue',
@@ -39,7 +41,7 @@ const imageHolderStyles: CSSProperties = {
     gap: '1rem',
 };
 
-const initialProfile: iProfile = {
+export const initialProfile: iProfile = {
     user: '',
     firstName: '',
     lastName: '',
@@ -113,7 +115,15 @@ const Profilepage = () => {
                         {(formProps: any) => {
                             return (
                                 <Form>
-                                    <div style={imageHolderStyles}>
+                                    <div style={{ ...imageHolderStyles, position: 'relative' }}>
+                                        <Button
+                                            sx={{ position: 'absolute', top: '0', right: '0' }}
+                                            endIcon={<Visibility />}
+                                        >
+                                            <Link href={`/profile/${authState?.user?.profileId as string}`}>
+                                                <a>View Profile</a>
+                                            </Link>
+                                        </Button>
                                         <Avatar
                                             alt="Profile Picture"
                                             src={

@@ -3,7 +3,7 @@ import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { FormEvent, Fragment, useState } from 'react';
 
-const PublicNavbar = () => {
+export const PublicNavbar = () => {
     return (
         <Box sx={{ flexGrow: 1 }}>
             <AppBar position="static">
