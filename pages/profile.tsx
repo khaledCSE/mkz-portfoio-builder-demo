@@ -6,10 +6,10 @@ import { CSSProperties, Dispatch, Fragment, SetStateAction, useContext, useEffec
 import PrivateRoute from '../components/auth/PrivateRoute';
 import { authContext } from '../components/contexts/auth.context';
 import TextInput from '../components/form/TextInput';
-import WorkInputGroup from '../components/form/WorkInputGroup';
+import WorkInputGroup, { initialExperience } from '../components/form/WorkInputGroup';
 import Navbar from '../components/Navbar';
 import { formatDateForInput } from '../components/utils/date.util';
-import { Edit as EditIcon, Visibility } from '@mui/icons-material';
+import { Edit as EditIcon, Visibility, Add as AddIcon } from '@mui/icons-material';
 
 export interface iWorkExperience {
     startDate: string;
@@ -188,7 +188,22 @@ const Profilepage = () => {
                                         {({ insert, remove, push }) => {
                                             const { values } = formProps;
                                             return (
-                                                <div style={{ margin: '1rem 0' }}>
+                                                <div
+                                                    style={{
+                                                        margin: '1rem 0',
+                                                    }}
+                                                >
+                                                    {values.workExperiences.length === 0 && (
+                                                        <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
+                                                            <Button
+                                                                variant="outlined"
+                                                                endIcon={<AddIcon />}
+                                                                onClick={() => push(initialExperience)}
+                                                            >
+                                                                Add Experience
+                                                            </Button>
+                                                        </div>
+                                                    )}
                                                     {values.workExperiences.map(
                                                         (experience: iWorkExperience, index: number) => (
                                                             <WorkInputGroup

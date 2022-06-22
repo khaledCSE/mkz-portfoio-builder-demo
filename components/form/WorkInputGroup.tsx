@@ -12,7 +12,7 @@ interface iProps {
     remove: any;
 }
 
-const initialExperience: iWorkExperience = {
+export const initialExperience: iWorkExperience = {
     company: '',
     endDate: '',
     jobTitle: '',

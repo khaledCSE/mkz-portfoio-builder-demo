@@ -31,7 +31,7 @@ const LoginPage = () => {
     const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
-        const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE}/auth/login`, {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE}/auth/register`, {
             method: 'POST',
             body: JSON.stringify({ email, password }),
             headers: { 'Content-Type': 'application/json' },
@@ -60,7 +60,7 @@ const LoginPage = () => {
             >
                 <Card sx={{ p: 3, width: '600px' }}>
                     <Typography variant="h5" sx={{ textAlign: 'center' }}>
-                        Login Here
+                        Signup Here
                     </Typography>
                     {errorTxt.length > 0 && <p style={{ color: 'red', textAlign: 'center' }}>{errorTxt}</p>}
                     <form onSubmit={handleSubmit}>
@@ -81,11 +81,12 @@ const LoginPage = () => {
                             required
                         />
                         <Button type="submit" variant="contained" size="large" sx={{ width: '100%', margin: '1rem 0' }}>
-                            Login
+                            Register
                         </Button>
+
                         <div style={{ textAlign: 'center' }}>
-                            <Link href="/auth/register">
-                                <a>Don't have an account? | Signup</a>
+                            <Link href="/auth/login">
+                                <a>Already have an account? | Login</a>
                             </Link>
                         </div>
                     </form>
