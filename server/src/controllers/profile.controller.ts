@@ -72,3 +72,21 @@ export const getSingleProfile = async (req: Request, res: Response) => {
         res.status(500).json({ msg: 'Server error' });
     }
 };
+
+export const getAllProfiles = async (req: Request, res: Response) => {
+    try {
+        const profiles = (await Profile.find({})).map((el) => ({
+            _id: el._id,
+            firstName: el.firstName,
+            lastName: el.lastName,
+            age: el.age,
+            designation: el.workExperiences[el.workExperiences.length - 1].jobTitle,
+            company: el.workExperiences[el.workExperiences.length - 1].company,
+            profilePicture: el.profilePicture,
+        }));
+        res.json(profiles);
+    } catch (err: any) {
+        console.log(err);
+        res.status(500).json({ msg: 'Server error' });
+    }
+};

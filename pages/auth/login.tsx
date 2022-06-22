@@ -2,6 +2,7 @@ import { AppBar, Box, Button, Card, Container, TextField, Toolbar, Typography } 
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { FormEvent, Fragment, useState } from 'react';
+import Navbar from '../../components/Navbar';
 
 export const PublicNavbar = () => {
     return (
@@ -51,7 +52,8 @@ const LoginPage = () => {
             <Head>
                 <title>Jobber | Login</title>
             </Head>
-            <PublicNavbar />
+            {/* <PublicNavbar /> */}
+            <Navbar />
             <Box
                 sx={{ width: '100%', height: '100vh', display: 'flex', justifyContent: 'center', alignItems: 'center' }}
             >

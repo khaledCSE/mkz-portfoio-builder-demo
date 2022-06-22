@@ -32,7 +32,7 @@ const SingleProfile = () => {
     }, [id]);
 
     return (
-        <PrivateRoute>
+        <Fragment>
             <Head>
                 <title>Jobber | Profile</title>
             </Head>
@@ -43,13 +43,15 @@ const SingleProfile = () => {
                 <Container>
                     <Card sx={{ p: 3, margin: '5rem 0' }}>
                         <div style={{ ...imageHolderStyles, position: 'relative' }}>
-                            <IconButton sx={{ position: 'absolute', top: '0', right: '0' }}>
-                                <Link href="/profile">
-                                    <a>
-                                        <EditIcon />
-                                    </a>
-                                </Link>
-                            </IconButton>
+                            {authState && authState.user && (
+                                <IconButton sx={{ position: 'absolute', top: '0', right: '0' }}>
+                                    <Link href="/profile">
+                                        <a>
+                                            <EditIcon />
+                                        </a>
+                                    </Link>
+                                </IconButton>
+                            )}
                             <Avatar
                                 alt="Profile Picture"
                                 src={profile.profilePicture as string}
@@ -89,7 +91,7 @@ const SingleProfile = () => {
                     </Card>
                 </Container>
             )}
-        </PrivateRoute>
+        </Fragment>
     );
 };
 

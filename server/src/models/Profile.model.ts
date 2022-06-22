@@ -16,7 +16,7 @@ interface iProfileDocument extends Document {
     email?: string;
     profilePicture?: string;
     age?: number;
-    workExperiences?: iWorkExperience[];
+    workExperiences: iWorkExperience[];
 }
 
 const ProfileSchema = new Schema(
