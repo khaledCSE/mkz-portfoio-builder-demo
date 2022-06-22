@@ -33,8 +33,8 @@ const ProfileSchema = new Schema(
         workExperiences: {
             type: [
                 {
-                    startDate: { type: String, default: '' },
-                    endDate: { type: String, default: '' },
+                    startDate: { type: Date, default: '' },
+                    endDate: { type: Date, default: '' },
                     jobTitle: { type: String, default: '' },
                     company: { type: String, default: '' },
                     // companyLogo: { type: String, default: '' },

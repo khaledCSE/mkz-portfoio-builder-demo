@@ -66,7 +66,30 @@ const Profilepage = () => {
     }, [authState]);
 
     const handleSubmit = async (profile: iProfile) => {
-        console.log(profile);
+        if (authState && authState.user) {
+            const token = localStorage.getItem('jobber-auth-token') as string;
+
+            const body = new FormData();
+            body.append('firstName', profile.firstName as string);
+            body.append('lastName', profile.lastName as string);
+            body.append('profilePicture', profile.profilePicture as File);
+            body.append('age', (profile.age as number).toString());
+            body.append('workExperiences', JSON.stringify(profile.workExperiences));
+
+            const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE}/profiles`, {
+                method: 'PATCH',
+                headers: { 'jobber-auth-token': token },
+                body,
+            });
+
+            const data = await res.json();
+
+            if (data.msg === 'success') {
+                const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE}/profiles/${authState.user.profileId}`);
+                const data = await res.json();
+                setProfile(data);
+            }
+        }
     };
 
     const getUrlForImage = (image: File, setter: Dispatch<SetStateAction<string | ArrayBuffer | null>>) => {
@@ -93,7 +116,11 @@ const Profilepage = () => {
                                     <div style={imageHolderStyles}>
                                         <Avatar
                                             alt="Profile Picture"
-                                            src={selectedImage ? (selectedImage as string) : ''}
+                                            src={
+                                                selectedImage
+                                                    ? (selectedImage as string)
+                                                    : formProps.values.profilePicture
+                                            }
                                             sx={{ width: 100, height: 100 }}
                                         />
                                         <label htmlFor="contained-button-file">
@@ -158,6 +185,8 @@ const Profilepage = () => {
                                                                 key={index}
                                                                 experience={experience}
                                                                 index={index}
+                                                                push={push}
+                                                                remove={remove}
                                                             />
                                                         )
                                                     )}
