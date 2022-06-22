@@ -3,6 +3,17 @@ import * as bcrypt from 'bcryptjs';
 import * as jwt from 'jsonwebtoken';
 import User from '../models/User.model';
 import Profile from '../models/Profile.model';
+import { iAPIUser } from './profile.controller';
+
+export const getUser = async (req: Request, res: Response) => {
+    try {
+        const api_user: iAPIUser = req.body.api_user;
+        res.json(api_user);
+    } catch (err: any) {
+        console.log(err);
+        res.status(500).json({ msg: 'Server error' });
+    }
+};
 
 export const registerUser = async (req: Request, res: Response) => {
     try {

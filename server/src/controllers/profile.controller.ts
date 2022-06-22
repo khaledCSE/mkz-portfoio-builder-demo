@@ -52,3 +52,15 @@ export const updateProfile = async (req: Request, res: Response) => {
         res.status(500).json({ msg: 'Server error' });
     }
 };
+
+export const getSingleProfile = async (req: Request, res: Response) => {
+    try {
+        const id = req.params.id;
+        const profile = await Profile.findById(id);
+
+        res.json(profile);
+    } catch (err: any) {
+        console.log(err);
+        res.status(500).json({ msg: 'Server error' });
+    }
+};
