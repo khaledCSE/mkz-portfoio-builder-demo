@@ -8,8 +8,7 @@
         "lint": "next lint",
         "client": "next dev",
         "server": "nodemon server/src/server-dev.ts",
-        "dev": "concurrently \"npm run server\" \"npm run client\"",
-        "heroku-postbuild": "npm i"
+        "dev": "concurrently \"npm run server\" \"npm run client\""
     },
     "dependencies": {
         "@emotion/react": "^11.9.3",
