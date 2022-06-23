@@ -29,7 +29,8 @@
         "react-dom": "18.2.0",
         "suneditor": "^2.43.11",
         "suneditor-react": "^3.4.0",
-        "yup": "^0.32.11"
+        "yup": "^0.32.11",
+        "typescript": "4.7.4"
     },
     "devDependencies": {
         "@types/bcryptjs": "^2.4.2",
@@ -44,7 +45,6 @@
         "eslint": "8.18.0",
         "eslint-config-next": "12.1.6",
         "nodemon": "^2.0.16",
-        "ts-node": "^10.8.1",
-        "typescript": "4.7.4"
+        "ts-node": "^10.8.1"
     }
 }
