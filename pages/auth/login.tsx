@@ -85,7 +85,7 @@ const LoginPage = () => {
                         </Button>
                         <div style={{ textAlign: 'center' }}>
                             <Link href="/auth/register">
-                                <a>Don't have an account? | Signup</a>
+                                <a>Don&apos;t have an account? | Signup</a>
                             </Link>
                         </div>
                     </form>

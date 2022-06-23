@@ -45,7 +45,7 @@ const Home: NextPage = () => {
                     <Box sx={{ margin: '5rem 0' }}>
                         <Grid container spacing={3}>
                             {profiles.map((profile, index) => (
-                                <Grid item md={4}>
+                                <Grid item md={4} key={index}>
                                     <Card
                                         sx={{
                                             p: 3,
