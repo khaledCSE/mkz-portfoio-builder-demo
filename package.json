@@ -28,8 +28,6 @@
         "next": "12.1.6",
         "react": "18.2.0",
         "react-dom": "18.2.0",
-        "suneditor": "^2.43.11",
-        "suneditor-react": "^3.4.0",
         "yup": "^0.32.11",
         "typescript": "4.7.4"
     },
